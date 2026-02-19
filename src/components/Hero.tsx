@@ -1,92 +1,180 @@
-// "use client";
-// import { motion } from "framer-motion";
-// import { ArrowRight } from "lucide-react";
-
-// export default function Hero() {
-//   return (
-//     <section className="relative min-h-screen h-full pt-32 pb-20 px-6 overflow-hidden bg-background">
-      
-//       {/* GLOW REMOVAL & FIX: We use a very subtle, colored background element instead of white blur */}
-//       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[radial-gradient(circle_at_center,var(--accent-glow),transparent_70%)] -z-10" />
-
-//       <div className="max-w-4xl mx-auto text-center relative z-10">
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.5 }}
-//         >
-//           <span className="inline-block px-3 py-1 rounded-full border border-card-border bg-card text-[10px] font-bold text-slate-500 dark:text-gray-400 mb-6 uppercase tracking-[0.2em]">
-//             Available for Q1 2026 Projects
-//           </span>
-          
-//           {/* HEADING: Dynamic colors from CSS variables for perfect visibility */}
-//           <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[var(--heading-from)] to-[var(--heading-to)] leading-[1.1]">
-//             We Build Scalable Web & AI Solutions for Modern Businesses
-//           </h1>
-          
-//           <p className="text-lg text-slate-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-//             A specialized 2-person engineering team focusing on production-ready web apps and custom Generative AI integrations.
-//           </p>
-          
-//           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-//             <button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 group shadow-xl shadow-blue-500/20 transition-all cursor-pointer">
-//               Start your project
-//               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-//             </button>
-//             <button className="w-full sm:w-auto bg-card hover:bg-slate-200 dark:hover:bg-white/10 border border-card-border text-foreground px-8 py-4 rounded-2xl font-bold transition-all cursor-pointer">
-//               View our stack
-//             </button>
-//           </div>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Spotlight } from "@/components/ui/spotlight";
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      
-      {/* THE SPOTLIGHT: Positioned to sweep across from top-left */}
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-background">
+
+      {/* ── Background atmosphere ── */}
+
+      {/* Top-center radial bloom */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 50% at 50% -5%, rgba(56,189,248,0.13) 0%, rgba(99,102,241,0.06) 50%, transparent 70%)",
+        }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center">
+      {/* Bottom portal bloom */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 -z-10"
+        style={{
+          height: "55vh",
+          background:
+            "radial-gradient(ellipse 65% 80% at 50% 100%, rgba(14,165,233,0.14) 0%, rgba(56,189,248,0.06) 45%, transparent 70%)",
+        }}
+      />
+
+      {/* Subtle mesh grid */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.055] dark:opacity-[0.045]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(148,163,184,1) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,1) 1px, transparent 1px)",
+          backgroundSize: "52px 52px",
+        }}
+      />
+
+      {/* ── Content ── */}
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl mx-auto w-full  py-6">
+
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.55, ease: EASE }}
+          className="mb-7"
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-card-border bg-card/50 backdrop-blur-sm text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-gray-400 mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-card-border bg-card/50 backdrop-blur-sm text-[10px] font-medium text-slate-500 dark:text-slate-400 tracking-[0.15em] uppercase">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+            </span>
             Available for Q1 2026 Projects
           </span>
-          
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-[var(--heading-from)] to-[var(--heading-to)] leading-[1] py-2">
-            We Build Scalable <br className="hidden md:block" /> Web & AI Solutions
-          </h1>
-          
-          <p className="text-lg md:text-xl text-slate-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto font-medium">
-            A specialized 2-person engineering team focusing on production-ready web apps and custom Generative AI integrations.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all cursor-pointer active:scale-95 shadow-2xl shadow-blue-500/20">
-              Start your project
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="w-full sm:w-auto bg-card hover:bg-slate-200 dark:hover:bg-white/10 border border-card-border text-foreground px-10 py-5 rounded-2xl font-bold transition-all cursor-pointer active:scale-95">
-              View our stack
-            </button>
-          </div>
+        </motion.div>
+
+        {/* Heading — two clean lines, proportional size */}
+        <motion.h1
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.08, ease: EASE }}
+          className="text-[clamp(2.2rem,5.5vw,4rem)] font-semibold tracking-tight leading-[1.15] mb-5"
+          style={{ color: "var(--heading-from)" }}
+        >
+          We Build Scalable<br />Web &amp; AI Solutions
+        </motion.h1>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
+          className="text-sm md:text-base text-slate-500 dark:text-slate-400 max-w-sm font-normal leading-relaxed mb-9"
+        >
+          A specialized 2-person engineering team delivering production-ready
+          web apps and custom Generative AI integrations.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.22, ease: EASE }}
+          className="flex flex-col sm:flex-row items-center gap-3"
+        >
+          <button className="group bg-foreground text-background px-7 py-3 rounded-xl font-medium text-sm flex items-center gap-2 cursor-pointer active:scale-95 hover:opacity-85 transition-all">
+            Start your project
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+          </button>
+          <button className="border border-card-border text-foreground hover:bg-slate-100 dark:hover:bg-white/5 px-7 py-3 rounded-xl font-medium text-sm transition-colors cursor-pointer active:scale-95">
+            View our stack
+          </button>
         </motion.div>
       </div>
+
+      {/* ── Arch portal — large, fills the lower viewport ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 70 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3, delay: 0.38, ease: EASE }}
+        className="relative z-10 mt-auto flex justify-center w-full"
+      >
+        {/* Wide ambient glow pool beneath the arch */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none"
+          style={{
+            width: "560px",
+            height: "260px",
+            background:
+              "radial-gradient(ellipse at 50% 100%, rgba(14,165,233,0.22) 0%, rgba(56,189,248,0.08) 50%, transparent 70%)",
+            filter: "blur(8px)",
+          }}
+        />
+
+        {/* The arch itself */}
+        <div
+          className="relative overflow-hidden rounded-t-full"
+          style={{ width: 240, height: 330 }}
+        >
+          {/* Interior gradient fill */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(7,89,133,0.75) 0%, rgba(12,74,110,0.55) 40%, rgba(7,40,70,0.4) 100%)",
+            }}
+          />
+
+          {/* Top inner glow (the "light source" through the door) */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2"
+            style={{
+              top: -10,
+              width: 160,
+              height: 160,
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle, rgba(125,211,252,0.45) 0%, rgba(56,189,248,0.15) 50%, transparent 70%)",
+              filter: "blur(22px)",
+            }}
+          />
+
+          {/* Concentric arch rings */}
+          <div className="absolute inset-0 rounded-t-full border border-sky-400/25" />
+          <div
+            className="absolute rounded-t-full border border-sky-400/14"
+            style={{ inset: 14 }}
+          />
+          <div
+            className="absolute rounded-t-full border border-sky-300/08"
+            style={{ inset: 28 }}
+          />
+
+          {/* Bottom dark fill to blend with fade */}
+          <div
+            className="absolute bottom-0 left-0 right-0"
+            style={{
+              height: "45%",
+              background:
+                "linear-gradient(to top, rgba(5,8,18,0.95) 0%, transparent 100%)",
+            }}
+          />
+        </div>
+      </motion.div>
+
+      {/* Bottom edge fade — blends arch into bg */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-52 pointer-events-none z-20"
+        style={{
+          background:
+            "linear-gradient(to top, var(--background) 0%, var(--background) 15%, transparent 100%)",
+        }}
+      />
     </section>
   );
 }
