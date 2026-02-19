@@ -132,11 +132,11 @@ export default function Navbar() {
       href: "#services",
     },
     {
-      title: "Tech Stack",
+      title: "Workflow",
       icon: (
         <IconTerminal2 className="h-full w-full text-slate-500 dark:text-gray-300" />
       ),
-      href: "#stack",
+      href: "#workflow",
     },
     {
       title: "Contact",

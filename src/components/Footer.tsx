@@ -1,21 +1,29 @@
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 bg-background border-t border-card-border transition-colors duration-500">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex items-center gap-2 font-black text-xl tracking-tighter text-foreground">
-          <span>CODECRAFT</span>
-        </div>
-        
-        <div className="flex gap-8 text-sm font-medium text-slate-500 dark:text-gray-500">
-          <a href="#services" className="hover:text-blue-600 dark:hover:text-white transition-colors">Services</a>
-          <a href="#stack" className="hover:text-blue-600 dark:hover:text-white transition-colors">Tech Stack</a>
-          <a href="#workflow" className="hover:text-blue-600 dark:hover:text-white transition-colors">Workflow</a>
-          <a href="#contact" className="hover:text-blue-600 dark:hover:text-white transition-colors">Contact</a>
+    <footer className="border-t border-card-border bg-background">
+      <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+        {/* Logo */}
+        <span
+          className="text-sm font-semibold tracking-tight"
+          style={{ color: "var(--heading-from)" }}
+        >
+          CodeCraft
+        </span>
+
+        {/* Nav links */}
+        <div className="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+          <a href="#services" className="hover:text-foreground transition-colors">Services</a>
+          <a href="#stack" className="hover:text-foreground transition-colors">Tech Stack</a>
+          <a href="#workflow" className="hover:text-foreground transition-colors">Workflow</a>
+          <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
         </div>
 
-        <p className="text-[10px] text-slate-400 dark:text-gray-600 font-mono tracking-widest uppercase">
-          © 2026 CODECRAFT_AGENCY. ALL RIGHTS RESERVED.
+        {/* Copyright */}
+        <p className="text-xs text-slate-400 dark:text-slate-600">
+          © 2026 CodeCraft. All rights reserved.
         </p>
+
       </div>
     </footer>
   );

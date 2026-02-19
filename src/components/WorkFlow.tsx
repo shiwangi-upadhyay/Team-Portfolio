@@ -41,16 +41,6 @@ export default function WorkFlow() {
       id="workflow"
       className="relative py-18 px-6 bg-background overflow-hidden"
     >
-      {/* ── Mesh grid ── */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.055] dark:opacity-[0.045]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(148,163,184,1) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,1) 1px, transparent 1px)",
-          backgroundSize: "52px 52px",
-        }}
-      />
-
       {/* ── Radial bloom ── */}
       <div
         className="pointer-events-none absolute inset-0"
