@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Search, Layers, Code2, Send } from "lucide-react";
+import { TextSplit } from "@/components/ui/split-text";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -64,12 +65,15 @@ export default function WorkFlow() {
             Process
           </span>
 
-          <h2
+          <TextSplit
             className="text-[clamp(2rem,5vw,3.2rem)] font-semibold tracking-tight leading-[1.15] mb-4"
-            style={{ color: "var(--heading-from)" }}
+            topClassName="text-foreground"
+            bottomClassName="text-teal-500 dark:text-teal-400"
+            maxMove={60}
+            falloff={0.18}
           >
             How We Work
-          </h2>
+          </TextSplit>
 
           <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 font-normal max-w-sm leading-relaxed">
             A structured, engineering-first approach to every project.
