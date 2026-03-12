@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { TextSplit } from "@/components/ui/split-text";
 
 const techStack = {
   web: [
@@ -25,9 +26,15 @@ export default function TechStack() {
           viewport={{ once: true, amount: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground transition-colors">
+          <TextSplit
+            className="text-4xl md:text-5xl font-bold mb-4"
+            topClassName="text-foreground"
+            bottomClassName="text-teal-500 dark:text-teal-400"
+            maxMove={60}
+            falloff={0.18}
+          >
             Our Tech Stack
-          </h2>
+          </TextSplit>
           <p className="text-slate-500 dark:text-gray-400 text-lg transition-colors">
             Modern, battle-tested technologies
           </p>
